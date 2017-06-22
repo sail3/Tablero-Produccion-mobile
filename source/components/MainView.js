@@ -11,6 +11,7 @@ import {
   TouchableHighlight,
   StyleSheet
 } from 'react-native';
+const styles = require('./../utils/styles');
 
 class MainView extends Component {
   static navigationOptions = {
@@ -20,15 +21,8 @@ class MainView extends Component {
 
   constructor(props) {
     super(props);
-    // const {width, height} = Dimensions.get("window");
-    // let minWidth = Math.floor(width);
-    // let minHeight = Math.floor(height);
-    // let unitSize = Math.floor(minWidth / 12);
     this.state = {
       error: "",
-      // minWidth,
-      // minHeight,
-      // unitSize,
     };
     this.onLayout();
     this.loadData();
@@ -90,6 +84,7 @@ class MainView extends Component {
     const { navigate } = this.props.navigation;
     return(
       <View style={[styles.container, {width: this.state.minWidth, height: this.state.minHeight}]} onLayout={ () => this.onLayout()}>
+        <Image source={require('./../assets/logo.png')} />
         <TouchableHighlight style={[styles.boton, {width: this.state.unitSize * 10}]} onPress={() => this.displayBoard(navigate) }>
           <Text style={styles.textoBoton}>Tablero de Control</Text>
         </TouchableHighlight>
@@ -97,43 +92,9 @@ class MainView extends Component {
           <Text style={styles.textoBoton}>Panel de Configuracion</Text>
         </TouchableHighlight>
         <Text style={ styles.errorStyle }>{ this.state.error }</Text>
-        <Text style={{color: '#FFE800'}}>{JSON.stringify(this.state)}</Text>
       </View>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#0F0F0F',
-//     transform: [
-//       {rotate: '90deg'}
-//     ]
-//   },
-//   boton: {
-//     height: 40,
-//     backgroundColor: 'red',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     marginTop: 10,
-//     marginBottom: 10,
-//     borderRadius: 8,
-//     borderWidth: 1
-//   },
-//   textoBoton: {
-//     color: 'white',
-//     fontSize: 30
-//   },
-//   title: {
-//     fontSize: 25
-//   },
-//   errorStyle: {
-//     color: '#FF0801',
-//     fontSize: 35
-//   }
-// });
 
 module.exports = MainView;

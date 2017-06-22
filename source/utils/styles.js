@@ -8,9 +8,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#0F0F0F',
-    transform: [
-      {rotate: '90deg'}
-    ]
+  },
+  wrapper: {
+    transform: [{rotate: '90deg'}]
+  },
+  mainLogo: {
+    width: 50,
+    height: 50,
   },
   boton: {
     height: 40,
@@ -39,6 +43,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 30
   },
+  textDescription: {
+    color: '#FF0801',
+    fontSize: 20
+  },
+  textInput: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    color: 'white'
+  }
 });
 
 // const styles = StyleSheet.create({

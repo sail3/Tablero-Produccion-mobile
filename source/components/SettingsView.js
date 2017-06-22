@@ -21,7 +21,7 @@ class SettingsView extends Component {
   constructor(props) {
     super(props);
     const {width, height} = Dimensions.get("window");
-    let minWidth = Math.floor(height);
+    let minWidth = Math.floor(width);
     let minHeight = Math.floor(height);
     let unitSize = Math.floor(minWidth / 12);
     this.state = {
@@ -58,7 +58,7 @@ class SettingsView extends Component {
         AsyncStorage.setItem("STN_ipServer", this.state.ipServer);
         AsyncStorage.setItem("STN_portServer", this.state.portServer);
         AsyncStorage.setItem("STN_timeRefresh", this.state.timeRefresh);
-        navigate('Settings')
+        navigate('Home')
       }
     } catch (e) {
       console.log("eror en el guardado de datos", e);
@@ -67,7 +67,7 @@ class SettingsView extends Component {
 
   onLayout() {
     var {height, width} = Dimensions.get('window');
-    let minWidth = Math.floor(height);
+    let minWidth = Math.floor(width);
     let minHeight = Math.floor(height);
     let unitSize = Math.floor(minWidth / 12);
     this.setState({
@@ -80,46 +80,49 @@ class SettingsView extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return(
-      <View style={[styles.container, {width: this.state.minWidth}]} onLayout={ () => this.onLayout()}>
-        <Text>Numero de Linea</Text>
-        <TextInput
-          style={{ height: 40, width: this.state.minWidth, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(value) => { this.setState({lineNumber: value.trim()}) }}
-          value={ this.state.lineNumber}
-        />
-        <Text>Turno</Text>
-        <TextInput
-          style={{ height: 40, width: this.state.minWidth, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(value) => {this.setState({turn: value.trim()})}}
-          value={ this.state.turn}
-        />
-        <Text>Tiempo de rotacion</Text>
-        <TextInput
-          style={{ height: 40, width: this.state.minWidth, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(value) => {this.setState({rotationTime: value.trim()})}}
-          value={ this.state.rotationTime}
-        />
-        <Text>IP server</Text>
-        <TextInput
-          style={{ height: 40, width: this.state.minWidth, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(value) => {this.setState({ipServer: value.trim()})}}
-          value={ this.state.ipServer}
-        />
-        <Text>Port</Text>
-        <TextInput
-          style={{ height: 40, width: this.state.minWidth, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({portServer: text.trim()})}
-          value={ this.state.portServer}
-        />
-        <Text>Time refresh</Text>
-        <TextInput
-          style={{ height: 40, width: this.state.minWidth, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({timeRefresh: text.trim()})}
-          value={ this.state.timeRefresh}
-        />
-        <TouchableHighlight style={[styles.boton, { width: this.state.minWidth }]} onPress={() => this.saveData(navigate)}>
-          <Text style={styles.textoBoton}>Guardar</Text>
-        </TouchableHighlight>
+      <View style={styles.container} onLayout={ () => this.onLayout()}>
+        {/* <View style={[ styles.wapper, {width: this.state.minWidth, height: this.state.minHeight} ]} > */}
+        <View>
+          <Text style={styles.textDescription}>Numero de Linea</Text>
+          <TextInput
+            style={[styles.textInput, {width: this.state.unitSize * 10}]}
+            onChangeText={(value) => { this.setState({lineNumber: value.trim()}) }}
+            value={ this.state.lineNumber}
+          />
+          <Text style={styles.textDescription}>Turno</Text>
+          <TextInput
+            style={[styles.textInput, {width: this.state.unitSize * 10}]}
+            onChangeText={(value) => {this.setState({turn: value.trim()})}}
+            value={ this.state.turn}
+          />
+          <Text style={styles.textDescription}>Tiempo de rotacion</Text>
+          <TextInput
+            style={[styles.textInput, {width: this.state.unitSize * 10}]}
+            onChangeText={(value) => {this.setState({rotationTime: value.trim()})}}
+            value={ this.state.rotationTime}
+          />
+          <Text style={styles.textDescription}>IP server</Text>
+          <TextInput
+            style={[styles.textInput, {width: this.state.unitSize * 10}]}
+            onChangeText={(value) => {this.setState({ipServer: value.trim()})}}
+            value={ this.state.ipServer}
+          />
+          <Text style={styles.textDescription}>Port</Text>
+          <TextInput
+            style={[styles.textInput, {width: this.state.unitSize * 10}]}
+            onChangeText={(text) => this.setState({portServer: text.trim()})}
+            value={ this.state.portServer}
+          />
+          <Text style={styles.textDescription}>Time refresh</Text>
+          <TextInput
+            style={[styles.textInput, {width: this.state.unitSize * 10}]}
+            onChangeText={(text) => this.setState({timeRefresh: text.trim()})}
+            value={ this.state.timeRefresh}
+          />
+          <TouchableHighlight style={[styles.boton, { width: this.state.unitSize * 10 }]} onPress={() => this.saveData(navigate)}>
+            <Text style={styles.textoBoton}>Guardar</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
