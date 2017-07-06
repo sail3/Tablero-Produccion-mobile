@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   title: {
+    color: '#F4F409',
     fontSize: 25
   },
   row: {
@@ -52,6 +53,31 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     color: 'white'
+  },
+  table: {
+    backgroundColor: "yellow"
+  },
+  tableHeader: {
+    color: "green"
+  },
+  tableBody: {
+    color: "green"
+  },
+  row: {
+    color: 'blue',
+    justifyContent: 'center',
+    flexDirection: "row",
+    borderColor: 'gray',
+    borderBottomWidth: 1
+  },
+  cell: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 30
+  },
+  errorStyle: {
+    color: '#FF0801',
+    fontSize: 15
   }
 });
 
@@ -82,10 +108,6 @@ const styles = StyleSheet.create({
 //   title: {
 //     fontSize: 25
 //   },
-//   errorStyle: {
-//     color: '#FF0801',
-//     fontSize: 35
-//   }
 // });
 
 module.exports = styles;
